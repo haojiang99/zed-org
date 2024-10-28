@@ -1,0 +1,11 @@
+id = "org"
+name = "Org Mode"
+version = "0.0.1"
+schema_version = 1
+authors = ["Aleksei Gusev <aleksei.gusev@gmail.com>"]
+description = "Org Mode support for Zed"
+repository = "https://github.com/hron/zed-org"
+
+[grammars.org]
+repository = "https://github.com/milisims/tree-sitter-org"
+commit = "64cfbc213f5a83da17632c95382a5a0a2f3357c1"

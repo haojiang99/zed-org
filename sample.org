@@ -1,0 +1,19 @@
+#+TITLE: Example
+
+Some *marked up* words
+
+* TODO Title
+<2020-06-07 Sun>
+
+  - list a
+  - [-] list a
+    - [ ] list b
+    - [x] list b
+  - list a
+
+**  Subsection :tag:
+* [3/25] Some project
+** TODO Do this
+** After do that
+
+Text
