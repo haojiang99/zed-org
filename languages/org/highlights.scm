@@ -32,7 +32,7 @@
 ; Not sure about this one with the anchors.
 (item . (expr)? . (expr "[" "#" @preproc [ "num" "str" ] @preproc "]") @hint (#match? @hint "\[#.\]"))
 
-(tag_list (tag) @tag) @tag.doctype
+(tag_list (tag) @type) @type.doctype
 
 (property_drawer) @text.literal
 
@@ -42,14 +42,14 @@
 (property name: (expr) @property (value)? @property) @property
 
 ; Simple examples, but can also match (day), (date), (time), etc.
-(timestamp "[") @constant
+(timestamp "[") @link_uri
 (timestamp "<"
- (day)? @constant
- (date)? @constant
- (time)? @constant
- (repeat)? @constant
- (delay)? @constant
- ) @constant
+ (day)? @link_uri
+ (date)? @link_uri
+ (time)? @link_uri
+ (repeat)? @link_uri
+ (delay)? @link_uri
+ ) @link_uri
 
 ; Like OrgProperty, easy to choose how the '[fn:LABEL] DESCRIPTION' are highlighted
 (fndef label: (expr) @label (description) @label) @label
