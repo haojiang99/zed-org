@@ -11,9 +11,15 @@ Some *marked up* words
     - [x] list b
   - list a
 
-**  Subsection :tag:
+** Subsection :tag:
 * [3/25] Some project
 ** TODO Do this
+** DONE Completed todo
 ** After do that
+* [1/1] Done project
+** DONE subtask
+* [100%] Some percentage project
+** DONE Another todo
+
 
 Text

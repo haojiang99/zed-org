@@ -4,17 +4,18 @@
 
 ; Example highlighting for headlines. The headlines here will be matched
 ; cyclically, easily extended to match however your heart desires.
-(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*$") (item) @function)
-(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*$") (item) @function)
-(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*\\*$") (item) @function)
+(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*$") (item))
+(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*$") (item))
+(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*\\*$") (item))
 
 ; This one should be generated after scanning for configuration, using
 ; something like #any-of? for keywords, but could use a match if allowing
 ; markup on todo keywords is desirable.
-(item . (expr) @keyword (#eq? @keyword "TODO"))
-(item . (expr) @keyword (#eq? @keyword "DONE"))
-(item . (expr) @keyword (#match? @keyword "\[\d*/\d*\]"))
-(item . (expr) @keyword (#match? @keyword "\[\d*%\]"))
+(item . (expr) @keyword (#eq? @keyword "TODO") (expr)* @function)
+(item . (expr) @function (#not-eq? @function "TODO") (expr)*) @function
+(item . (expr) @comment (#eq? @comment "DONE") (expr)*) @constant
+(item . (expr) @keyword (#match? @keyword "\[\d*/\d*\]") (expr)* @function)
+(item . (expr) @keyword (#match? @keyword "\[\d*%\]") (expr)* @function)
 
 ; Not sure about this one with the anchors.
 (item . (expr)? . (expr "[" "#" @preproc [ "num" "str" ] @preproc "]") @hint (#match? @hint "\[#.\]"))
