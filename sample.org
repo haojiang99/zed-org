@@ -12,12 +12,14 @@ Some *marked up* words
   - list a
 
 ** Subsection :tag:
-* [3/25] Some project
+* [/] Project without concrete progress cookie
+* [24/25] Some project
 ** TODO Do this
 ** DONE Completed todo
 ** After do that
 * [1/1] Done project
 ** DONE subtask
+* [3%] Some percentage project
 * [100%] Some percentage project
 ** DONE Another todo
 
