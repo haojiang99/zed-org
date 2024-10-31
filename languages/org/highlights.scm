@@ -4,21 +4,19 @@
 
 ; Example highlighting for headlines. The headlines here will be matched
 ; cyclically, easily extended to match however your heart desires.
-(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*$") (item))
-(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*$") (item))
-(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*\\*$") (item))
+(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*$") (item) @function)
+(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*$") (item) @string.regex)
+(headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*\\*$") (item) @operator)
 
 ; TODO/DONE
-(item . (expr) @keyword (#eq? @keyword "TODO")) @function
-(item . (expr) @function (#not-eq? @function "TODO") (expr)*) @function
+(item . (expr) @keyword (#eq? @keyword "TODO"))
 (item . (expr) @constant.status (#eq? @constant.status "DONE") (expr)*) @constant
 
 ; Progress cookie with number of tasks: [3/7] and [7/7]
 (item .
     (expr "[" "num"? @keyword.done  "/"  "num"? @keyword.total "]") @keyword
         (#match? @keyword "\[\d+/\d+\]")
-        (#not-eq? @keyword.done @keyword.total)
-    (expr)*) @function
+        (#not-eq? @keyword.done @keyword.total))
 (item .
     (expr "[" "num" @constant.done  "/"  "num" @constant.total "]") @constant
         (#match? @constant "\[\d+/\d+\]")
@@ -26,7 +24,7 @@
         (expr)*) @constant
 
 ; Progress cookie with percentage: [33%] and [100%]
-(item . (expr) @keyword (#match? @keyword "\[\d*%\]") (#not-eq? @keyword "[100%]") (expr)* @function)
+(item . (expr) @keyword (#match? @keyword "\\[\\d*%\\]") (#not-eq? @keyword "[100%]"))
 (item . (expr) @constant.progress (#eq? @constant.progress "[100%]") (expr)* @constant)
 
 ; Not sure about this one with the anchors.

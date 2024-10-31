@@ -2,7 +2,19 @@
 
 Some *marked up* words
 
-* TODO Title
+* 1st level :tag:
+** 2nd level
+*** 3rd level
+**** 4th level
+* [1/2] Project in progress
+** TODO Do Something
+** DONE Completed Todo
+* [1/1] Completed project
+* [%] Project with percentage progress
+** [2%] Project with percentage progress
+*** [3%] Project with percentage progress
+**** [4%] Project with percentage progress
+** [100%] Completed project with percentage progress
 <2020-06-07 Sun>
 
   - list a
@@ -10,18 +22,5 @@ Some *marked up* words
     - [ ] list b
     - [x] list b
   - list a
-
-** Subsection :tag:
-* [/] Project without concrete progress cookie
-* [24/25] Some project
-** TODO Do this
-** DONE Completed todo
-** After do that
-* [1/1] Done project
-** DONE subtask
-* [3%] Some percentage project
-* [100%] Some percentage project
-** DONE Another todo
-
 
 Text
