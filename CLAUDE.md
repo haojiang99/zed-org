@@ -32,6 +32,11 @@ This is a Zed editor extension that adds Org Mode support. It uses tree-sitter-o
     - Note/information: NOTE → `@keyword.import`
     - Completed states: DONE → `@constant`
     - Cancelled states: CANCELLED, CANCELED, DEFERRED → `@comment.doc`
+  - Priority tags with distinct colors:
+    - `[#A]` (highest priority) → `@error.priority` (red)
+    - `[#B]` (medium priority) → `@warning.priority` (orange)
+    - `[#C]` (lower priority) → `@hint.priority` (muted)
+    - `[#D-Z]` (other priorities) → `@hint` (default)
   - Checkbox states with distinct colors:
     - `[ ]` (todo) → `@keyword` (orange)
     - `[x]` or `[X]` (done) → `@constant` (green)

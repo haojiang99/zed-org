@@ -10,6 +10,9 @@ Some *marked up* words
 * TODO Keywords Testing
 ** Active Action States
 *** TODO Standard todo task
+*** TODO [#A] High priority task (red)
+*** TODO [#B] Medium priority task (orange)
+*** TODO [#C] Low priority task (muted)
 *** NEXT Next task to work on
 *** STARTED Task that has been started
 *** IN-PROGRESS Task currently in progress
@@ -36,6 +39,7 @@ Some *marked up* words
 *** DEFERRED Deferred task
 
 * [1/2] Project in progress
+** TODO [#A] Urgent: Do Something Important
 ** TODO Do Something
 ** DONE Completed Todo
 

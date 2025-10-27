@@ -43,8 +43,16 @@
 (item . (expr) @keyword (#match? @keyword "\\[\\d*%\\]") (#not-eq? @keyword "[100%]"))
 (item . (expr) @constant.progress (#eq? @constant.progress "[100%]") (expr)* @constant)
 
-; Not sure about this one with the anchors.
-(item . (expr)? . (expr "[" "#" @preproc [ "num" "str" ] @preproc "]") @hint (#match? @hint "\[#.\]"))
+; Priority tags with distinct colors for each level
+; [#A] = red (using @constant like DONE keyword)
+; [#B] = orange (using @keyword like TODO)
+; [#C] = muted blue (using @hint)
+(item . (expr)? . (expr "[" "#" [ "num" "str" ] "]") @constant
+  (#match? @constant "\\[#A\\]"))
+(item . (expr)? . (expr "[" "#" [ "num" "str" ] "]") @keyword
+  (#match? @keyword "\\[#B\\]"))
+(item . (expr)? . (expr "[" "#" [ "num" "str" ] "]") @hint
+  (#match? @hint "\\[#C\\]"))
 
 (tag_list (tag) @type) @type.doctype
 

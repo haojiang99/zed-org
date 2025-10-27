@@ -25,6 +25,16 @@ Org Mode support for Zed.
 - **Completed states**: DONE
 - **Cancelled states**: CANCELLED, CANCELED, DEFERRED
 
+### Priority Tags
+
+Add priority tags after TODO keywords to highlight urgency:
+
+- `[#A]` - **Highest priority** (red) - urgent tasks
+- `[#B]` - **Medium priority** (orange) - important tasks
+- `[#C]` - **Lower priority** (muted) - can wait
+
+Example: `* TODO [#A] Fix critical bug`
+
 ### Change TODO Keywords
 
 Place your cursor on a line with a TODO keyword (e.g., `* TODO Task name`) and press `Alt+C`. You'll see options to change it to any other keyword:
