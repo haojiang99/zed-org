@@ -84,11 +84,18 @@
 ; Can match different styles with a (#match?) or (#eq?) predicate if desired
 (bullet) @punctuation
 
-; Get different colors for different statuses as follows
+; Checkbox highlighting with distinct colors for each state
+; [x] or [X] - Done (checked) - green
+(checkbox status: (expr "str") @constant (#any-of? @constant "x" "X"))
+
+; [-] - In-progress - yellow/distinct color
+(checkbox status: (expr "-") @operator)
+
+; [ ] - Todo (empty checkbox) - orange (matches anything that's not x/X/-)
+(checkbox status: (expr) @keyword (#not-any-of? @keyword "x" "X" "-"))
+
+; Checkbox brackets
 (checkbox) @punctuation
-(checkbox status: (expr "-") @punctuation.bracket)
-(checkbox status: (expr "str") @punctuation.delimiter (#any-of? @punctuation.delimiter "x" "X"))
-(checkbox status: (expr) @punctuation.special (#not-any-of? @punctuation.special "x" "X" "-"))
 
 ; If you want the ruler one color and the separators a different color,
 ; something like this would do it:

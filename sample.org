@@ -61,7 +61,8 @@ Some *marked up* words
   - list a
   - [-] list a
     - [x] list b
-    - [x] list b
+    - [x] check list b
+
   - list a
 
 Text

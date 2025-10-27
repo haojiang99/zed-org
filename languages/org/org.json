@@ -1,0 +1,17 @@
+{
+  "checkbox": {
+    "prefix": "check",
+    "body": "- [ ] $0",
+    "description": "Insert a checkbox item"
+  },
+  "checkbox-done": {
+    "prefix": "checkx",
+    "body": "- [x] $0",
+    "description": "Insert a completed checkbox item"
+  },
+  "checkbox-progress": {
+    "prefix": "check-",
+    "body": "- [-] $0",
+    "description": "Insert an in-progress checkbox item"
+  }
+}

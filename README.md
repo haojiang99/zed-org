@@ -23,11 +23,38 @@ Org Mode support for Zed.
 - **Completed states**: DONE
 - **Cancelled states**: CANCELLED, CANCELED, DEFERRED
 
-## Checkbox Toggle
+## Checkbox Features
+
+### Quick Insertion
+
+**Method 1: Smart Insert (Recommended for Vim users)**
+
+When you're on an empty line after a checkbox:
+1. Press `Alt+C` to show the code action menu
+2. Select "Insert new checkbox [ ]"
+3. A new checkbox will be inserted with the same indentation
+
+Perfect for Vim mode: Press `o` to create a new line, then `Alt+C` + `Enter` to insert a checkbox!
+
+**Method 2: Snippets**
+
+Type these prefixes and press `Tab`:
+- `check` + `Tab` → `- [ ]` (new todo checkbox)
+- `checkx` + `Tab` → `- [x]` (completed checkbox)
+- `check-` + `Tab` → `- [-]` (in-progress checkbox)
+
+### Toggle Checkbox States
 
 Toggle checkboxes between states: `[ ]` → `[x]` → `[-]` → `[ ]`
 
-To set up a keyboard shortcut (recommended: `Alt+C`), see [KEYMAP_SETUP.md](KEYMAP_SETUP.md).
+Place cursor on a checkbox line and press `Alt+C` + `Enter` to toggle.
+
+Each checkbox state has a distinct color:
+- `[ ]` - Todo (orange)
+- `[x]` - Done (green)
+- `[-]` - In-progress (yellow)
+
+To set up the `Alt+C` shortcut, see [KEYMAP_SETUP.md](KEYMAP_SETUP.md).
 
 ## Installation
 
@@ -42,7 +69,7 @@ To set up a keyboard shortcut (recommended: `Alt+C`), see [KEYMAP_SETUP.md](KEYM
 
 ### Setting Up Checkbox Toggle
 
-After installing the extension, set up the `Alt+C` shortcut to toggle checkboxes directly:
+After installing the extension, set up the `Alt+C` shortcut to toggle checkboxes:
 
 1. Press `Ctrl+K` then `Ctrl+S` (or `Cmd+K` `Cmd+S` on macOS)
 2. Add this to your keymap:
@@ -52,13 +79,13 @@ After installing the extension, set up the `Alt+C` shortcut to toggle checkboxes
   {
     "context": "Editor && mode == full",
     "bindings": {
-      "alt-c": "editor::ConfirmCodeAction"
+      "alt-c": "editor::ToggleCodeActions"
     }
   }
 ]
 ```
 
-Now pressing `Alt+C` will instantly toggle the checkbox without showing a menu!
+Press `Alt+C` to open the menu, then press `Enter` to apply the toggle.
 
 See [KEYMAP_SETUP.md](KEYMAP_SETUP.md) for more options and troubleshooting.
 

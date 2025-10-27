@@ -47,6 +47,7 @@ connection.onCodeAction((params) => {
   const match = line.match(checkboxRegex);
 
   if (match) {
+    // CASE 1: Toggle existing checkbox
     const currentState = match[2];
     let newState;
     let actionTitle;
@@ -91,6 +92,37 @@ connection.onCodeAction((params) => {
         },
       },
     });
+  } else if (line.trim() === '' && range.start.line > 0) {
+    // CASE 2: Empty line - check if previous line has a checkbox
+    const previousLine = document.getText({
+      start: { line: range.start.line - 1, character: 0 },
+      end: { line: range.start.line - 1, character: Number.MAX_SAFE_INTEGER },
+    });
+
+    const prevCheckboxMatch = previousLine.match(checkboxRegex);
+
+    if (prevCheckboxMatch) {
+      // Previous line has a checkbox, offer to insert a new one
+      const indentation = prevCheckboxMatch[1]; // Get the same indentation
+
+      codeActions.push({
+        title: 'Insert new checkbox [ ]',
+        kind: CodeActionKind.QuickFix,
+        edit: {
+          changes: {
+            [params.textDocument.uri]: [
+              {
+                range: {
+                  start: { line: range.start.line, character: 0 },
+                  end: { line: range.start.line, character: line.length },
+                },
+                newText: `${indentation}[ ] `,
+              },
+            ],
+          },
+        },
+      });
+    }
   }
 
   return codeActions;

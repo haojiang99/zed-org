@@ -32,6 +32,10 @@ This is a Zed editor extension that adds Org Mode support. It uses tree-sitter-o
     - Note/information: NOTE → `@keyword.import`
     - Completed states: DONE → `@constant`
     - Cancelled states: CANCELLED, CANCELED, DEFERRED → `@comment.doc`
+  - Checkbox states with distinct colors:
+    - `[ ]` (todo) → `@keyword` (orange)
+    - `[x]` or `[X]` (done) → `@constant` (green)
+    - `[-]` (in-progress) → `@operator` (yellow/distinct)
   - Progress cookies with numbers `[3/7]` and percentages `[33%]` with different styling for complete vs incomplete
   - Tags styled as `@type`
   - Properties, timestamps, footnotes, directives, drawers, and blocks all have dedicated styling
@@ -43,6 +47,11 @@ This is a Zed editor extension that adds Org Mode support. It uses tree-sitter-o
 - `languages/org/injections.scm`: Code injection configuration
   - Enables syntax highlighting for code blocks (e.g., `#+begin_src rust`)
   - Captures the language parameter and block contents for proper highlighting
+
+- `languages/org/org.json`: Snippet definitions for quick text insertion
+  - `check` + Tab → `- [ ]` (todo checkbox)
+  - `checkx` + Tab → `- [x]` (done checkbox)
+  - `check-` + Tab → `- [-]` (in-progress checkbox)
 
 ### Tree-sitter Query Files
 
@@ -56,13 +65,21 @@ The `.scm` files use tree-sitter query syntax with predicates like `#match?`, `#
 
 The extension includes a custom Node.js-based language server (`language-server/server.js`) that provides:
 
-### Checkbox Toggle Code Actions
+### Checkbox Code Actions
 
-Detects checkbox patterns and provides code actions to cycle through states:
-- Pattern: `- [ ]`, `- [x]`, `- [-]`
-- Cycle: `[ ]` → `[x]` → `[-]` → `[ ]`
-- Implementation: LSP `textDocument/codeAction` with QuickFix kind
-- Triggered by: Code action keybinding (e.g., `Alt+C` or `Ctrl+.`)
+The language server provides two types of code actions:
+
+**1. Toggle Checkbox State**
+- Detects checkbox patterns: `- [ ]`, `- [x]`, `- [-]`
+- Cycles through states: `[ ]` → `[x]` → `[-]` → `[ ]`
+- Triggered when cursor is on a line with a checkbox
+
+**2. Insert New Checkbox**
+- Detects when cursor is on an empty line after a checkbox line
+- Offers to insert `- [ ]` with the same indentation as the previous checkbox
+- Perfect for quickly creating checkbox lists
+
+Both actions use LSP `textDocument/codeAction` with QuickFix kind and are triggered by: `Alt+C` or `Ctrl+.`
 
 ### Architecture
 

@@ -1,19 +1,41 @@
 # Keyboard Shortcut Setup for Checkbox Toggle
 
-This document explains how to set up a keyboard shortcut (Alt+C) to toggle org-mode checkboxes.
+This document explains how to set up keyboard shortcuts for org-mode checkboxes in Zed.
 
-## How It Works
+## Quick Checkbox Insertion
+
+### Method 1: Smart Insert with Alt+C (Recommended)
+
+When you're on an empty line after a checkbox:
+1. Press `Alt+C` to show code actions
+2. Select "Insert new checkbox [ ]" (press `Enter`)
+3. A new checkbox appears with the same indentation
+
+**Perfect for Vim users**: Press `o` to create a new line, then `Alt+C` + `Enter`!
+
+### Method 2: Snippets
+
+Type the prefix and press `Tab`:
+- **`check`** + `Tab` → inserts `- [ ]` (todo checkbox)
+- **`checkx`** + `Tab` → inserts `- [x]` (done checkbox)
+- **`check-`** + `Tab` → inserts `- [-]` (in-progress checkbox)
+
+After pressing Tab, your cursor will be positioned right after the checkbox, ready to type.
+
+## Checkbox Toggle Shortcut
+
+### How It Works
 
 The extension provides a language server that detects checkbox patterns in your org files:
-- `[ ]` (todo)
-- `[x]` or `[X]` (done)
-- `[-]` (in-progress)
+- `[ ]` (todo) - orange
+- `[x]` or `[X]` (done) - green
+- `[-]` (in-progress) - yellow
 
 The toggle cycles through states: `[ ]` → `[x]` → `[-]` → `[ ]`
 
-## Setting Up the Keyboard Shortcut
+### Setting Up Alt+C for Toggle
 
-### Step 1: Open Keymap Configuration
+#### Step 1: Open Keymap Configuration
 
 In Zed, press:
 - **Linux/Windows**: `Ctrl+K` then `Ctrl+S`
@@ -21,22 +43,9 @@ In Zed, press:
 
 Or use the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and search for: **"zed: Open Keymap"**
 
-### Step 2: Add the Keybinding
+#### Step 2: Add the Keybinding
 
-**For direct toggle (recommended)** - Press `Alt+C` and the checkbox changes immediately:
-
-```json
-[
-  {
-    "context": "Editor && mode == full",
-    "bindings": {
-      "alt-c": "editor::ConfirmCodeAction"
-    }
-  }
-]
-```
-
-**Alternative: Show menu first** - Press `Alt+C` to see a menu, then click to apply:
+Add this to your `keymap.json`:
 
 ```json
 [
@@ -49,14 +58,9 @@ Or use the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and search for: **"z
 ]
 ```
 
-### Step 3: Alternative - Use the Built-in Code Action Shortcut
+**Note**: This shows a menu with the toggle action. Press `Alt+C`, then press `Enter` or click to apply.
 
-Alternatively, you can use Zed's default code action shortcuts:
-- Place cursor on a line with a checkbox
-- Press `Ctrl+.` (or `Cmd+.` on macOS) to open code actions
-- Select the checkbox toggle action
-
-### Step 4: Verify It Works
+#### Step 3: Verify It Works
 
 1. Open an org file (e.g., `sample.org`)
 2. Place your cursor on a line with a checkbox:
@@ -64,7 +68,8 @@ Alternatively, you can use Zed's default code action shortcuts:
    - [ ] Todo item
    ```
 3. Press `Alt+C`
-4. The checkbox should toggle to `[x]`
+4. Press `Enter` to apply the action
+5. The checkbox should toggle to `[x]`
 
 ## Customizing the Keybinding
 
@@ -94,18 +99,17 @@ You can change `alt-c` to any key combination you prefer. Some alternatives:
 2. **Check the pattern**: Checkboxes must follow org-mode format: `- [ ]`, `- [x]`, `- [-]`
 3. **Restart Zed**: Sometimes extensions need a restart to reload
 
-## Advanced: Multiple Actions
+### Snippets don't work
 
-If you want different keys for different actions:
+1. **Make sure you press Tab**: Type `check` then press `Tab`
+2. **Check language mode**: Ensure the file is recognized as "Org" (bottom right corner in Zed)
+3. **Reload extension**: `Ctrl+Shift+P` → "reload" → "zed: reload window"
 
-```json
-[
-  {
-    "context": "Editor",
-    "bindings": {
-      "alt-c": "editor::ToggleCodeActions",
-      "alt-shift-c": "editor::ConfirmCodeAction"
-    }
-  }
-]
-```
+## Tips
+
+- **Quick workflow**:
+  1. Type `check` + `Tab` to insert a new checkbox
+  2. Type your task
+  3. Press `Alt+C` + `Enter` to mark it complete later
+
+- **Alternative approach**: Use Zed's default `Ctrl+.` or `Cmd+.` instead of `Alt+C` if you prefer the default code action shortcut
