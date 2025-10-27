@@ -8,9 +8,25 @@
 (headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*$") (item) @string.regex)
 (headline (stars) @comment (#match? @comment "^(\\*{3})*\\*\\*\\*$") (item) @operator)
 
-; TODO/DONE
-(item . (expr) @keyword (#eq? @keyword "TODO"))
+; TODO Keywords - Active action states (need work)
+(item . (expr) @keyword (#any-of? @keyword "TODO" "NEXT"))
+(item . (expr) @string.special (#any-of? @string.special "IN-PROGRESS" "INPROGRESS"))
+(item . (expr) @keyword.function (#eq? @keyword.function "STARTED"))
+
+; TODO Keywords - Waiting/Blocked states
+(item . (expr) @keyword.directive (#any-of? @keyword.directive "WAITING" "HOLD" "DELEGATED"))
+
+; TODO Keywords - Low priority/Maybe states
+(item . (expr) @keyword.storage (#any-of? @keyword.storage "MAYBE" "SOMEDAY"))
+
+; TODO Keywords - Note/Information
+(item . (expr) @keyword.import (#eq? @keyword.import "NOTE"))
+
+; DONE Keywords - Completed states
 (item . (expr) @constant.status (#eq? @constant.status "DONE") (expr)*) @constant
+
+; DONE Keywords - Cancelled/Deferred states
+(item . (expr) @comment.doc (#any-of? @comment.doc "CANCELLED" "CANCELED" "DEFERRED") (expr)*) @comment.doc
 
 ; Progress cookie with number of tasks: [3/7] and [7/7]
 (item .

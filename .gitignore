@@ -1,1 +1,5 @@
 grammars/
+target/
+language-server/node_modules/
+language-server/package-lock.json
+Cargo.lock

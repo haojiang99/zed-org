@@ -6,15 +6,47 @@ Some *marked up* words
 ** 2nd level
 *** 3rd level
 **** 4th level
+
+* TODO Keywords Testing
+** Active Action States
+*** TODO Standard todo task
+*** NEXT Next task to work on
+*** STARTED Task that has been started
+*** IN-PROGRESS Task currently in progress
+*** INPROGRESS Alternative in-progress format
+
+** Waiting/Blocked States
+*** WAITING Waiting for external input
+*** HOLD Task on hold
+*** DELEGATED Delegated to someone else
+
+** Low Priority States
+*** MAYBE Task we might do
+*** SOMEDAY Task for later consideration
+
+** Note/Information
+*** NOTE Important note or reference
+
+** Completed States
+*** DONE Completed task
+
+** Cancelled States
+*** CANCELLED Cancelled task (US spelling)
+*** CANCELED Canceled task (UK spelling)
+*** DEFERRED Deferred task
+
 * [1/2] Project in progress
 ** TODO Do Something
 ** DONE Completed Todo
+
 * [1/1] Completed project
+
 * [%] Project with percentage progress
 ** [2%] Project with percentage progress
 *** [3%] Project with percentage progress
 **** [4%] Project with percentage progress
 ** [100%] Completed project with percentage progress
+
 <2020-06-07 Sun>
 
     #+begin_src rust

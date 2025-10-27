@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "WebFetch(domain:orgmode.org)",
+      "WebFetch(domain:zed.dev)",
+      "Bash(chmod:*)",
+      "Bash(cargo build:*)",
+      "Bash(npm install:*)",
+      "Bash(tree:*)",
+      "Bash(rustc:*)",
+      "WebFetch(domain:boundaryml.com)",
+      "Bash(curl:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
