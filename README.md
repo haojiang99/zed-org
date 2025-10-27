@@ -12,7 +12,9 @@ Org Mode support for Zed.
 - **Code Blocks**: Syntax highlighting for embedded code blocks
 - **Outline Navigation**: Navigate your org files by heading structure
 
-## TODO Keyword Colors
+## TODO Keywords
+
+### Supported Keywords
 
 - **Active states**: TODO, NEXT (orange)
 - **In-progress states**: IN-PROGRESS, INPROGRESS (light green)
@@ -22,6 +24,15 @@ Org Mode support for Zed.
 - **Note/information**: NOTE
 - **Completed states**: DONE
 - **Cancelled states**: CANCELLED, CANCELED, DEFERRED
+
+### Change TODO Keywords
+
+Place your cursor on a line with a TODO keyword (e.g., `* TODO Task name`) and press `Alt+C`. You'll see options to change it to any other keyword:
+
+- `TODO` → `IN-PROGRESS` → `DONE`
+- Or jump directly to any state: `TODO` → `WAITING`, `TODO` → `CANCELLED`, etc.
+
+Each option is labeled with its category for easy selection!
 
 ## Checkbox Features
 

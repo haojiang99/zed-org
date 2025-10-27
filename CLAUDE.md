@@ -65,21 +65,30 @@ The `.scm` files use tree-sitter query syntax with predicates like `#match?`, `#
 
 The extension includes a custom Node.js-based language server (`language-server/server.js`) that provides:
 
-### Checkbox Code Actions
+### Code Actions
 
-The language server provides two types of code actions:
+The language server provides three types of code actions:
 
-**1. Toggle Checkbox State**
+**1. Change TODO Keywords**
+- Detects lines starting with `* TODO`, `** IN-PROGRESS`, etc.
+- Offers code actions to change to any other TODO keyword
+- Supports all keywords: TODO, NEXT, IN-PROGRESS, INPROGRESS, STARTED, WAITING, HOLD, DELEGATED, MAYBE, SOMEDAY, NOTE, DONE, CANCELLED, CANCELED, DEFERRED
+- Each action is labeled with its category (Active, In Progress, Done, etc.)
+- Uses LSP `CodeActionKind.RefactorRewrite`
+
+**2. Toggle Checkbox State**
 - Detects checkbox patterns: `- [ ]`, `- [x]`, `- [-]`
 - Cycles through states: `[ ]` → `[x]` → `[-]` → `[ ]`
 - Triggered when cursor is on a line with a checkbox
+- Uses LSP `CodeActionKind.QuickFix`
 
-**2. Insert New Checkbox**
+**3. Insert New Checkbox**
 - Detects when cursor is on an empty line after a checkbox line
 - Offers to insert `- [ ]` with the same indentation as the previous checkbox
 - Perfect for quickly creating checkbox lists
+- Uses LSP `CodeActionKind.QuickFix`
 
-Both actions use LSP `textDocument/codeAction` with QuickFix kind and are triggered by: `Alt+C` or `Ctrl+.`
+All actions are triggered by: `Alt+C` or `Ctrl+.`
 
 ### Architecture
 

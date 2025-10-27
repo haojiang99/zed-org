@@ -22,16 +22,29 @@ Type the prefix and press `Tab`:
 
 After pressing Tab, your cursor will be positioned right after the checkbox, ready to type.
 
-## Checkbox Toggle Shortcut
+## Alt+C Features
 
-### How It Works
+The `Alt+C` shortcut provides context-aware actions depending on where your cursor is:
 
-The extension provides a language server that detects checkbox patterns in your org files:
+### 1. Change TODO Keywords
+
+On a line with a TODO keyword (e.g., `* TODO Task`):
+- Shows all available TODO keywords to switch to
+- Options include: TODO, NEXT, IN-PROGRESS, STARTED, WAITING, HOLD, DONE, etc.
+- Each labeled with its category (Active, In Progress, Done, etc.)
+
+### 2. Toggle Checkboxes
+
+On a line with a checkbox:
 - `[ ]` (todo) - orange
 - `[x]` or `[X]` (done) - green
 - `[-]` (in-progress) - yellow
+- Cycles through states: `[ ]` → `[x]` → `[-]` → `[ ]`
 
-The toggle cycles through states: `[ ]` → `[x]` → `[-]` → `[ ]`
+### 3. Insert New Checkbox
+
+On an empty line after a checkbox:
+- Offers to insert a new checkbox with matching indentation
 
 ### Setting Up Alt+C for Toggle
 
