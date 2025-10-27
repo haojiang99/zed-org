@@ -60,7 +60,7 @@ Some *marked up* words
 
   - list a
   - [-] list a
-    - [ ] list b
+    - [x] list b
     - [x] list b
   - list a
 

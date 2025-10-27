@@ -42,7 +42,7 @@ To set up a keyboard shortcut (recommended: `Alt+C`), see [KEYMAP_SETUP.md](KEYM
 
 ### Setting Up Checkbox Toggle
 
-After installing the extension, set up the `Alt+C` shortcut to toggle checkboxes:
+After installing the extension, set up the `Alt+C` shortcut to toggle checkboxes directly:
 
 1. Press `Ctrl+K` then `Ctrl+S` (or `Cmd+K` `Cmd+S` on macOS)
 2. Add this to your keymap:
@@ -52,13 +52,15 @@ After installing the extension, set up the `Alt+C` shortcut to toggle checkboxes
   {
     "context": "Editor && mode == full",
     "bindings": {
-      "alt-c": "editor::ToggleCodeActions"
+      "alt-c": "editor::ConfirmCodeAction"
     }
   }
 ]
 ```
 
-See [KEYMAP_SETUP.md](KEYMAP_SETUP.md) for more details.
+Now pressing `Alt+C` will instantly toggle the checkbox without showing a menu!
+
+See [KEYMAP_SETUP.md](KEYMAP_SETUP.md) for more options and troubleshooting.
 
 ## Development
 

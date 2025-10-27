@@ -23,20 +23,7 @@ Or use the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and search for: **"z
 
 ### Step 2: Add the Keybinding
 
-Add this to your `keymap.json`:
-
-```json
-[
-  {
-    "context": "Editor && mode == full",
-    "bindings": {
-      "alt-c": "editor::ToggleCodeActions"
-    }
-  }
-]
-```
-
-**Note**: This will show the code actions menu. To directly apply the first action without the menu, you can use:
+**For direct toggle (recommended)** - Press `Alt+C` and the checkbox changes immediately:
 
 ```json
 [
@@ -44,6 +31,19 @@ Add this to your `keymap.json`:
     "context": "Editor && mode == full",
     "bindings": {
       "alt-c": "editor::ConfirmCodeAction"
+    }
+  }
+]
+```
+
+**Alternative: Show menu first** - Press `Alt+C` to see a menu, then click to apply:
+
+```json
+[
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "alt-c": "editor::ToggleCodeActions"
     }
   }
 ]
